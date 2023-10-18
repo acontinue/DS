@@ -1,54 +1,54 @@
 #include   <iostream>
 using namespace std;
 
-//¶¨Òå½á¹¹ÌåÖĞµÄÔªËØÀàĞÍ-Defines the element type of the struct
+//å®šä¹‰ç»“æ„ä½“ä¸­çš„å…ƒç´ ç±»å‹-Defines the element type of the struct
 #define ElemType int 
 
-//¶¨Òå×î´óÖµ-Define the maximum value
+//å®šä¹‰æœ€å¤§å€¼-Define the maximum value
 #define MaxSize 12
 
-//¶¨ÒåÏßĞÔ±íµÄ½á¹¹Ìå-A structure that defines a linear list
+//å®šä¹‰çº¿æ€§è¡¨çš„ç»“æ„ä½“-A structure that defines a linear list
 typedef struct
 {
-    //¶¨ÒåÊı×éÀàĞÍ-Defining Array types
+    //å®šä¹‰æ•°ç»„ç±»å‹-Defining Array types
     ElemType* elem;
 
-    //¶¨Òå³¤¶È-Defining Array types
+    //å®šä¹‰é•¿åº¦-Defining Array types
     int length;
     /* data */
 }SqList;
 
-//³õÊ¼»¯ÏßĞÔ±í-Initialize the linear table
+//åˆå§‹åŒ–çº¿æ€§è¡¨-Initialize the linear table
 bool InitSqList(SqList& L) {
 
-    //ÉêÇëµØÖ·¿Õ¼ä-Requesting address space
+    //ç”³è¯·åœ°å€ç©ºé—´-Requesting address space
     L.elem = new ElemType[MaxSize];
 
-    //ÅĞ¶ÏÊÇ·ñ³É¹¦-Determine whether it is successful.
+    //åˆ¤æ–­æ˜¯å¦æˆåŠŸ-Determine whether it is successful.
     if (!L.elem) return false;
     L.length = 0;
     return true;
 }
 
-//»ñÈ¡Ö¸¶¨Î»ÖÃµÄÔªËØÖµ-Retrieves the element value at the specified position
+//è·å–æŒ‡å®šä½ç½®çš„å…ƒç´ å€¼-Retrieves the element value at the specified position
 bool GetElem(SqList& L, int i, ElemType& e) {
-    //ºÏ·¨ĞÔÅĞ¶Ï-Judgment of legitimacy
+    //åˆæ³•æ€§åˆ¤æ–­-Judgment of legitimacy
     if (i<1 || i>L.length)return false;
     e = L.elem[i - 1];
     return true;
 }
 
-//²éÕÒÔªËØÊÇ·ñÔÚ±íÖĞ²éÔªËØÊÇ·ñ±íÖĞ-Check whether the element is in the table
+//æŸ¥æ‰¾å…ƒç´ æ˜¯å¦åœ¨è¡¨ä¸­æŸ¥å…ƒç´ æ˜¯å¦è¡¨ä¸­-Check whether the element is in the table
 int  LocateElem(SqList L, ElemType e) {
     for (int i = 0; i < L.length; i++) {
         if (L.elem[i] == e)return i + 1;
     }
     return 0;
-    //-Ê±¼ä¸´ÔÓ¶È-time complexity-O(n);
+    //-æ—¶é—´å¤æ‚åº¦-time complexity-O(n);
 }
 
 
-//Ö¸¶¨Î»ÖÃ²åÈëÔªËØ-Inserts an element at the specified position
+//æŒ‡å®šä½ç½®æ’å…¥å…ƒç´ -Inserts an element at the specified position
 bool InsertElem(SqList& L, int i, ElemType e) {
     if (i<1 || i>L.length + 1)return false;
     if (L.length == MaxSize)return false;
@@ -59,10 +59,10 @@ bool InsertElem(SqList& L, int i, ElemType e) {
     L.elem[i - 1] = e;
     L.length++;
     return true;
-    //-Ê±¼ä¸´ÔÓ¶È-time complexity-O(n);
+    //-æ—¶é—´å¤æ‚åº¦-time complexity-O(n);
 }
 
-//É¾³ıÖ¸¶¨ÔªËØ-Remove the specified element
+//åˆ é™¤æŒ‡å®šå…ƒç´ -Remove the specified element
 bool DelElem(SqList& L, int i, ElemType& e) {
     if (i<1 || i>L.length)return false;
     if (L.length == 0)return false;
@@ -74,9 +74,9 @@ bool DelElem(SqList& L, int i, ElemType& e) {
     return true;
 }
 
-//±éÀúÕû¸ö±í-Iterate over the entire table
+//éå†æ•´ä¸ªè¡¨-Iterate over the entire table
 void CoutSqList(SqList L) {
-    for (int i = 0; i < L.length; i++)cout << "µÚ" << i << "¸öÔªËØÊÇ£º" << L.elem[i] << "\t";
+    for (int i = 0; i < L.length; i++)cout << "ç¬¬" << i << "ä¸ªå…ƒç´ æ˜¯ï¼š" << L.elem[i] << "\t";
     cout << endl;
 }
 
