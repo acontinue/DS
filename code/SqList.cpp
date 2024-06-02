@@ -6,6 +6,7 @@ using namespace std;
 
 //定义最大值-Define the maximum value
 #define MaxSize 12
+//啊实打实大苏打实打实的
 
 //定义线性表的结构体-A structure that defines a linear list
 typedef struct
@@ -15,6 +16,7 @@ typedef struct
 
     //定义长度-Defining Array types
     int length;
+     //sdfasdfa
     /* data */
 }SqList;
 
